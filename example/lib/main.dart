@@ -16,7 +16,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
-final myStream = Stream<int>.periodic(Duration(seconds: 1), (x) => (x == 3) ? throw Exception('oops') : x).take(5);
+final myStream = Stream<int>.periodic(
+        Duration(seconds: 1), (x) => (x == 3) ? throw Exception('oops') : x)
+    .take(5);
 
 class Home extends StatelessWidget {
   @override
@@ -39,10 +41,10 @@ class Home extends StatelessWidget {
   void _showAlert(BuildContext context, String text) {
     showDialog(
       context: context,
-      child: AlertDialog(
+      builder: (_) => AlertDialog(
         content: Text(text),
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             child: Text('OK'),
             onPressed: () => Navigator.of(context).pop(),
           )
