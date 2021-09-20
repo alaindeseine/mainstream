@@ -5,12 +5,6 @@ import 'package:mainstream/mainstream.dart';
 // ignore_for_file: missing_required_param
 
 void main() {
-  group('Constructor', () {
-    testWidgets('throws assertion error if stream is null', (tester) async {
-      expect(() => StreamListener(), throwsAssertionError);
-    });
-  });
-
   group('Child', () {
     testWidgets('shows child widget if not null', (tester) async {
       final text = 'busy';
@@ -40,7 +34,7 @@ void main() {
       final widget = MaterialApp(
         home: StreamListener(
           stream: stream,
-          onData: expectAsync1((d) => expect(d, data)),
+          onData: expectAsync1((dynamic d) => expect(d, data)),
         ),
       );
       await tester.pumpWidget(widget);
